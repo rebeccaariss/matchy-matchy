@@ -33,10 +33,38 @@
   }
 } */
 
-.card {
+.counter {
   padding: 2em;
 }
 
 /* .read-the-docs {
   color: #888;
 } */
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(89, 137, 159);
+  padding: 1rem;
+  margin: 1rem;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 10px;
+  font-size: 5rem;
+}
+
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 30px 5px rgba(63, 81, 90, 0.5);
+}
+
+/* Note to add media queries for resizing AND resizing for number of cards on screen */
+
+/* Also light and dark mode? */
