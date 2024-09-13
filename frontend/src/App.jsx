@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import './App.less'
 
 function App() {
   const [move, setMove] = useState(1)
@@ -17,9 +17,13 @@ function App() {
 
   const cards = []
 
-  for (const emoji in emojis) {
-    cards.push(emojis[emoji])
+  for (let i = 0; i < 12; i++) {
+    cards.push(emojis[i])
   }
+
+  // for (const emoji in emojis) {
+  //   cards.push(emojis[emoji])
+  // }
 
   const handleClick = () => {
     if (move < 2) {
@@ -32,20 +36,14 @@ function App() {
 
   return (
     <>
-      <h1>let&apos;s get matchy matchy</h1>
+      <h1>let&apos;s get matchy matchy 👯‍♀️</h1>
       <div className='cards'>
-        <div className='card' onClick={handleClick}>{cards[0]}</div>
-        <div className='card' onClick={handleClick}>{cards[1]}</div>
-        <div className='card' onClick={handleClick}>{cards[2]}</div>
-        <div className='card' onClick={handleClick}>{cards[3]}</div>
-        <div className='card' onClick={handleClick}>{cards[4]}</div>
-        <div className='card' onClick={handleClick}>{cards[5]}</div>
-        <div className='card' onClick={handleClick}>{cards[6]}</div>
-        <div className='card' onClick={handleClick}>{cards[7]}</div>
-        <div className='card' onClick={handleClick}>{cards[8]}</div>
-        <div className='card' onClick={handleClick}>{cards[9]}</div>
-        <div className='card' onClick={handleClick}>{cards[10]}</div>
-        <div className='card' onClick={handleClick}>{cards[11]}</div>
+        {cards.map((emoji, index) => (
+          <div key={index} className='card card-wrapper flip-left' onClick={handleClick}>
+            <div className='front'>*</div>
+            <div className='back'>{emoji}</div>
+          </div>
+        ))}
       </div>
       <div className='counter'>
         <button>

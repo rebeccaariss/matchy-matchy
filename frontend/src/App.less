@@ -45,6 +45,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 50rem;
 }
 
 .card {
@@ -68,3 +69,61 @@
 /* Note to add media queries for resizing AND resizing for number of cards on screen */
 
 /* Also light and dark mode? */
+
+/* Card flip animation:
+  Codepen:  https://codepen.io/wellingguzman/pen/RyyeVq
+  Author:   Welling Guzman
+  URL:      http://wellingguzman.com
+  Twitter:  http://twitter.com/wellingguzman
+*/
+
+.card-wrapper {
+  display: inline-block;
+  perspective: 1000px;
+
+
+  /* CARD FLIP LEFT */
+  &.flip-left {
+    .card {
+      .back {
+        transform: rotateY(-180deg);
+      }
+    }
+
+    &:hover {
+      .card {
+        transform: rotateY(-180deg);
+      }
+    }
+  }
+
+  .card-wrapper, .card {
+    width: 200px;
+    height: 200px;
+    
+    margin: 10px;
+  }
+
+  .card {
+    .front, .back {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid red;
+      border-radius: 4px;
+    }
+    
+    .front {
+      color: white;
+      background: blueviolet;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+    
+    .back {
+      font-size: 1.5rem;
+      color: white;
+      background: pink;
+    }
+  }
+}
