@@ -9,9 +9,10 @@ const shuffle = (array) => {
   return array
 }
 
-const emojis = ['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', '🦥', '🐙', '🦄', '🐸', '🦊', '🐻‍❄️', '👀', '👻', '😼', '🤠', '😎', '🤓', '✨', '🙈', '🙉', '🦕', '🦖', '🦭', '🦡', '🦨', '🦝', '🍄‍🟫', '🌈', '🎸', '🔮', '📚', '💾', '🎮', '👾', '💻', '🍂', '🤘', '💀']
+const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', '🦥', '🐙', '🦄', '🐸', '🦊', '🐻‍❄️', '👀', '👻', '😼', '🤠', '😎', '🤓', '✨', '🙈', '🙉', '🦕', '🦖', '🦭', '🦡', '🦨', '🦝', '🍄‍🟫', '🌈', '🎸', '🔮', '📚', '💾', '🎮', '👾', '💻', '🍂', '🤘', '💀'])
 // Currently 40 emojis
 // Build 12 card base game: cards themselves with emojis or images
+// (TODO: user should be able to specify number of cards per game at a later point)
 // Cards need to have unique IDs, need to have 2 of each randomly chosen emoji
 // On click, store card ID (up to a max of 2 cards) in state
 // If the strings match, reset cards (IDs) in state and hide those two from view

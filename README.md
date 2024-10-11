@@ -13,7 +13,7 @@ Breaking down the process (with pictures!)
 3. For every 2 clicks, 1 turn is taken (2 clicks will eventually represent either matched or mismatched cards). The click handler updates state values (`move` and `turns`) depending on how many times the user has clicked cards.
 4. Turns are displayed via state logic beneath the cards.
 
-<center><img src='./frontend/public/progress/1.png' alt='Progress screenshot 1' width='500' height='500'></center>
+<img src='./frontend/public/progress/1.png' alt='Progress screenshot 1' width='500' height='500'>
 
 ## October 10:
 
@@ -26,7 +26,7 @@ Breaking down the process (with pictures!)
 
 On each click, the entire game would reshuffle:
 
-<center><img src='./frontend/public/progress/2.gif' alt='Progress screenshot 2: Bug' width='500' height='500'></center>
+<img src='./frontend/public/progress/2.gif' alt='Progress screenshot 2: Bug' width='500' height='500'>
 
 ### 🩺 Diagnosing the problem:
 
@@ -38,4 +38,8 @@ While there are many potential solutions to this sort of re-rendering issue (Rea
 
 Here you can see that the shuffle function still randomizes the placement of the cards when the application is refreshed _and_ the cards stay in place when the aforementioned state change takes place (on each click of a card):
 
-<center><img src='./frontend/public/progress/new.gif' alt='Progress screenshot 3: Solution' width='500' height='500'></center>
+<img src='./frontend/public/progress/3.gif' alt='Progress screenshot 3: Solution' width='500' height='500'>&nbsp;
+
+Following this bug fix, I made another call to the `shuffle` function in order to randomize the `emojis` array. This ensures that when they are appended to the `cards` array, we'll have a different assortment of `emojis` for each game:
+
+<img src='./frontend/public/progress/4.gif' alt='Progress screenshot 4' width='500' height='500'>
