@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.less'
 
-// Fisher-Yates Sorting Algorithm implementation for shuffling an array of items: https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
 const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -10,32 +9,28 @@ const shuffle = (array) => {
   return array
 }
 
+const emojis = ['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', '🦥', '🐙', '🦄', '🐸', '🦊', '🐻‍❄️', '👀', '👻', '😼', '🤠', '😎', '🤓', '✨', '🙈', '🙉', '🦕', '🦖', '🦭', '🦡', '🦨', '🦝', '🍄‍🟫', '🌈', '🎸', '🔮', '📚', '💾', '🎮', '👾', '💻', '🍂', '🤘', '💀']
+// Currently 40 emojis
+// Build 12 card base game: cards themselves with emojis or images
+// Cards need to have unique IDs, need to have 2 of each randomly chosen emoji
+// On click, store card ID (up to a max of 2 cards) in state
+// If the strings match, reset cards (IDs) in state and hide those two from view
+
+// Keeping track of turns: every 2 clicks represents a turn.
+// Tracking: moves and misses, rounds played, overall accuracy score. See scoreboard here: https://www.helpfulgames.com/subjects/brain-training/memory.html 
+
+const cards = []
+
+for (let i = 0; i < 6; i++) {
+  cards.push(emojis[i])
+  cards.push(emojis[i])
+}
+
+const shuffledCards = shuffle(cards)
+
 function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
-
-  const emojis = ['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', '🦥', '🐙', '🦄', '🐸', '🦊', '🐻‍❄️', '👀', '👻', '😼', '🤠', '😎', '🤓', '✨', '🙈', '🙉', '🦕', '🦖', '🦭', '🦡', '🦨', '🦝', '🍄‍🟫', '🌈', '🎸', '🔮', '📚', '💾', '🎮', '👾', '💻', '🍂', '🤘', '💀']
-  // Currently 40 emojis
-  // Build 12 card base game: cards themselves with emojis or images
-  // Cards need to have unique IDs, need to have 2 of each randomly chosen emoji
-  // On click, store card ID (up to a max of 2 cards) in state
-  // If the strings match, reset cards (IDs) in state and hide those two from view
-
-  // Keeping track of turns: every 2 clicks represents a turn.
-  // Tracking: moves and misses, rounds played, overall accuracy score. See scoreboard here: https://www.helpfulgames.com/subjects/brain-training/memory.html 
-
-  const cards = []
-
-  for (let i = 0; i < 6; i++) {
-    cards.push(emojis[i])
-    cards.push(emojis[i])
-  }
-
-  // for (const emoji in emojis) {
-  //   cards.push(emojis[emoji])
-  // }
-
-  const shuffledCards = shuffle(cards)
 
   const handleClick = () => {
     if (move < 2) {
