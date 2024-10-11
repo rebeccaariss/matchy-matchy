@@ -1,6 +1,15 @@
 import { useState } from 'react'
 import './App.less'
 
+// Fisher-Yates Sorting Algorithm implementation for shuffling an array of items: https://www.freecodecamp.org/news/how-to-shuffle-an-array-of-items-using-javascript-or-typescript/
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array
+}
+
 function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
@@ -17,13 +26,16 @@ function App() {
 
   const cards = []
 
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 6; i++) {
+    cards.push(emojis[i])
     cards.push(emojis[i])
   }
 
   // for (const emoji in emojis) {
   //   cards.push(emojis[emoji])
   // }
+
+  const shuffledCards = shuffle(cards)
 
   const handleClick = () => {
     if (move < 2) {
@@ -38,9 +50,9 @@ function App() {
     <>
       <h1>let&apos;s get matchy matchy 👯‍♀️</h1>
       <div className='cards'>
-        {cards.map((emoji, index) => (
+        {shuffledCards.map((emoji, index) => (
           <div key={index} className='card card-wrapper flip-left' onClick={handleClick}>
-            <div className='front'>*</div>
+            {/* <div className='front'>*</div> */}
             <div className='back'>{emoji}</div>
           </div>
         ))}
