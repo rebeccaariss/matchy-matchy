@@ -43,3 +43,10 @@ Here you can see that the shuffle function still randomizes the placement of the
 Following this bug fix, I made another call to the `shuffle` function in order to randomize the `emojis` array. This ensures that when they are appended to the `cards` array, we'll have a different assortment of `emojis` for each game:
 
 <img src='./frontend/public/progress/4.gif' alt='Progress screenshot 4' width='500' height='500'>
+
+## October 15:
+
+1. Added state management for `selections` (the emojis selected on each turn will populate the `selections` array for comparison and clear out every 2 clicks).
+2. Wrote `checkMatch` function to compare card selections and check for a match. As I'm working incrementally, currently this function prints to console either _"It's a match! 🥳"_ or _"Sorry, no match. 😢"_
+3. Updated click handler function to use `setSelections` when a card is clicked, updating the `selections` array with the emoji that has just been clicked.
+4. Added call to `useEffect` to monitor changes in `selections` state. This ensures that when a comparison between two selected cards is made, both emojis are present in the `selections` array (accounting for React's asynchronous state updates).
