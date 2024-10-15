@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.less'
 
 const shuffle = (array) => {
@@ -20,6 +20,11 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 // Keeping track of turns: every 2 clicks represents a turn.
 // Tracking: moves and misses, rounds played, overall accuracy score. See scoreboard here: https://www.helpfulgames.com/subjects/brain-training/memory.html 
 
+// Card comparisons:
+// 1. Basic comparison
+// 2. Account for double clicks (ex: clicking twice on a card results in a match)
+// 3. Update scoring
+
 const cards = []
 
 for (let i = 0; i < 6; i++) {
@@ -32,22 +37,41 @@ const shuffledCards = shuffle(cards)
 function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
+  const [selections, setSelections] = useState([])
 
-  const handleClick = () => {
+  useEffect(() => {
+    if (selections.length === 2) {
+      checkMatch(selections[0], selections[1])
+    }
+    console.log(selections)
+  }, [selections])
+
+  const checkMatch = (firstSelection, secondSelection) => {
+    if (firstSelection === secondSelection) {
+      console.log('It\'s a match! 🥳')
+    } else {
+      console.log('Sorry, no match. 😢')
+    }
+    setSelections([]) // reset selections to empty array after checking match
+  }
+
+  const handleClick = (emoji) => {
     if (move < 2) {
       setMove((move) => move + 1)
+      setSelections([emoji])
     } else {
       setTurns(turns + 1)
       setMove(1)
+      setSelections([...selections, emoji])
     }
   }
 
   return (
     <>
-      <h1>let&apos;s get matchy matchy 👯‍♀️</h1>
+      <h1>matchy matchy 👯‍♀️</h1>
       <div className='cards'>
         {shuffledCards.map((emoji, index) => (
-          <div key={index} className='card card-wrapper flip-left' onClick={handleClick}>
+          <div key={index} className='card card-wrapper flip-left' onClick={() => handleClick(emoji)}>
             {/* <div className='front'>*</div> */}
             <div className='back'>{emoji}</div>
           </div>
