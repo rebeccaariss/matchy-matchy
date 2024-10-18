@@ -55,16 +55,16 @@ Following this bug fix, I made another call to the `shuffle` function in order t
 
 Today my focus was to begin addressing the issue of double clicks, meaning: two clicks should not be counted as a match if the user is double clicking the same card. While technically they will have clicked the same emoji twice, their selections should come from two different cards– as in a traditional matching/memory game.
 
-I've opted to compare not only `emojis` but `id`s as well. As each card is assigned a `key` during rendering, I can easily take the cards' `key` values and assign them to an `id` variable in an object representing a `first` or `second` selection.
+I've opted to compare not only `emojis` but `ids` as well. As each card is assigned a `key` during rendering, I can easily take the cards' `key` values and assign them to an `id` variable in an object representing a `first` or `second` selection. By comparing `ids`, we can account for the double click issue.
 
-I began by typing out what I wanted the object to look like:
+I began by typing out what I wanted the object to look like. I will often write out the general structure of an object this way as it helps me to visualize the data as a starting point:
 
-<img src='./frontend/public/progress/5.png' alt='Progress screenshot 5'>
+<img src='./frontend/public/progress/5.png' alt='Progress screenshot 5'>&nbsp;
 
-I then refactored to reduce the number of lines the object was taking for better readability:
+I then refactored the object to reduce the number of lines for better readability:
 
-<img src='./frontend/public/progress/6.png' alt='Progress screenshot 6'>
+<img src='./frontend/public/progress/6.png' alt='Progress screenshot 6'>&nbsp;
 
-And updated the state initialization and corresponding code accordingly:
+And then, using this object structure, updated the state initialization and corresponding code accordingly:
 
-<img src='./frontend/public/progress/7.png' alt='Progress screenshot 7'>
+<img src='./frontend/public/progress/7.png' alt='Progress screenshot 7'>&nbsp;
