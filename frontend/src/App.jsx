@@ -25,10 +25,11 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 
 // 2. Account for double clicks (ex: clicking twice on a card results in a match) -- change to object instead of array so you can compare IDs.
     // Further reading: https://stackoverflow.com/questions/75238932/initializing-state-in-react-js-with-objects-is-it-better-to-initialize-with-an - also came across a reason to explore TS
+    // https://forum.freecodecamp.org/t/using-an-object-reference-to-set-initial-state-in-react/236139
 
 // 3. Update scoring
 
-// 4. Refactor for clarity in variable names, verbosity, structure, efficiency
+// 4. Refactor for clarity in variable names, verbosity, structure, efficiency (see links)
 
 const cards = []
 
@@ -66,15 +67,14 @@ function App() {
     }) // Adjust to use spread operator instead? Rather than repeating here.
   }
 
-  // TODO: refactor for new default selections obj/ID comparison:
-  const handleClick = (emoji) => {
-    if (move < 2) {
-      setMove((move) => move + 1)
-      setSelections([emoji])
-    } else {
-      setTurns(turns + 1)
+  const handleClick = (id, emoji) => {
+    if (move === 1) { // Writing it this way makes the code easier to understand: "move 1" is more human-readable
+      setSelections({...selections, first: {id, emoji}})
+      setMove(2)
+    } else if (move === 2) { // Again: modified for human-readability; explicitly saying "move 2"
+      setSelections({...selections, second: {id, emoji}})
       setMove(1)
-      setSelections([...selections, emoji])
+      setTurns(turns + 1)
     }
   }
 
@@ -83,7 +83,7 @@ function App() {
       <h1>matchy matchy 👯‍♀️</h1>
       <div className='cards'>
         {shuffledCards.map((emoji, index) => (
-          <div key={index} className='card card-wrapper flip-left' onClick={() => handleClick(emoji)}>
+          <div key={index} className='card card-wrapper flip-left' onClick={() => handleClick(index, emoji)}>
             {/* <div className='front'>*</div> */}
             <div className='back'>{emoji}</div>
           </div>
