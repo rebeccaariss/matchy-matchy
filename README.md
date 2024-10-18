@@ -71,10 +71,12 @@ And then, using this object structure, updated the state initialization and corr
 
 ## October 18:
 
-1. Completed yesterday's refactoring by passing both `id` and `emoji` values via the click handler for each card.
+1. Completed yesterday's refactor by passing both `id` and `emoji` values via the click handler for each card.
 2. Set up `handleClick` function to receive both of these values.
 3. Tested to ensure that the values were printing to the console as expected (`first` and `second` objects should be updated with `id` and `emoji` values; `id` values should be different; `selections.first` and `selections.second` should reset to `null` values following each turn taken):
 
    <img src='./frontend/public/progress/8.png' alt='Progress screenshot 8' width='500' height='500'>
 
 4. Adjusted `handleClick` conditionals to make the code more human-readable. For example: instead of writing `if (move < 2)`, I wrote `if (move === 1)`. Instead of writing `setMove((move) => move + 1)`, I wrote `setMove(2)`.
+5. Updated `checkMatch` function to first check the `ids` of selected emojis. If the `ids` for `first` and `second` `selections` are the same: a message prints to indicate that the same card has been selected twice, the `selections` state is reset to `null` values, and function exection ends. User will then be able to take another turn.
+   <img src='./frontend/public/progress/9.png' alt='Progress screenshot 9' width='500' height='500'>

@@ -16,6 +16,7 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 // Cards need to have unique IDs, need to have 2 of each randomly chosen emoji
 // On click, store card ID (up to a max of 2 cards) in state
 // If the strings match, reset cards (IDs) in state and hide those two from view
+// Display turns conditionally: "1 turn taken so far" instead of "1 turns taken so far"
 
 // Keeping track of turns: every 2 clicks represents a turn.
 // Tracking: moves and misses, rounds played, overall accuracy score. See scoreboard here: https://www.helpfulgames.com/subjects/brain-training/memory.html 
@@ -56,6 +57,14 @@ function App() {
   }, [selections])
 
   const checkMatch = (firstSelection, secondSelection) => {
+    if (firstSelection.id === secondSelection.id) {
+      console.log('Oops, you clicked the same card twice!')
+      setSelections({
+        first: { id: null, emoji: null },
+        second: { id: null, emoji: null }
+      }) // Adjust to use spread operator instead? Rather than repeating here.
+      return
+    }
     if (firstSelection.emoji === secondSelection.emoji) {
       console.log('It\'s a match! 🥳')
     } else {
