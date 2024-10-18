@@ -50,3 +50,21 @@ Following this bug fix, I made another call to the `shuffle` function in order t
 2. Wrote `checkMatch` function to compare card selections and check for a match. As I'm working incrementally, currently this function prints to console either _"It's a match! 🥳"_ or _"Sorry, no match. 😢"_
 3. Updated click handler function to use `setSelections` when a card is clicked, updating the `selections` array with the emoji that has just been clicked.
 4. Added call to `useEffect` to monitor changes in `selections` state. This ensures that when a comparison between two selected cards is made, both emojis are present in the `selections` array (accounting for React's asynchronous state updates).
+
+## October 17:
+
+Today my focus was to begin addressing the issue of double clicks, meaning: two clicks should not be counted as a match if the user is double clicking the same card. While technically they will have clicked the same emoji twice, their selections should come from two different cards– as in a traditional matching/memory game.
+
+I've opted to compare not only `emojis` but `id`s as well. As each card is assigned a `key` during rendering, I can easily take the cards' `key` values and assign them to an `id` variable in an object representing a `first` or `second` selection.
+
+I began by typing out what I wanted the object to look like:
+
+<img src='./frontend/public/progress/5.png' alt='Progress screenshot 5'>
+
+I then refactored to reduce the number of lines the object was taking for better readability:
+
+<img src='./frontend/public/progress/6.png' alt='Progress screenshot 6'>
+
+And updated the state initialization and corresponding code accordingly:
+
+<img src='./frontend/public/progress/7.png' alt='Progress screenshot 7'>
