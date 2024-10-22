@@ -31,15 +31,16 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 // 3. Update scoring
 
 // 4. Refactor for clarity in variable names, verbosity, structure, efficiency (see links)
+// Could add theme selection! Like click leaves for fall, crystal ball for witchy, controller for gaming, etc.
 
-const cards = []
+const cardEmojis = [] // TODO: adjust variable names
 
 for (let i = 0; i < 6; i++) {
-  cards.push(emojis[i])
-  cards.push(emojis[i])
+  cardEmojis.push(emojis[i])
+  cardEmojis.push(emojis[i])
 }
 
-const shuffledCards = shuffle(cards)
+const shuffledEmojis = shuffle(cardEmojis)
 
 function App() {
   const [move, setMove] = useState(1)
@@ -48,6 +49,13 @@ function App() {
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
   })
+  const [cards, setCards] = useState(
+    shuffledEmojis.map((emoji, index) => ({
+      id: index,
+      emoji: emoji,
+      matched: false
+    }))
+  )
 
   useEffect(() => {
     if (selections.first.emoji && selections.second.emoji) {
@@ -91,10 +99,14 @@ function App() {
     <>
       <h1>matchy matchy 👯‍♀️</h1>
       <div className='cards'>
-        {shuffledCards.map((emoji, index) => (
-          <div key={index} className='card card-wrapper flip-left' onClick={() => handleClick(index, emoji)}>
+        {cards.map((card) => (
+          <div 
+            key={card.id}
+            className='card card-wrapper flip-left' 
+            onClick={() => handleClick(card.id, card.emoji)}
+          >
             {/* <div className='front'>*</div> */}
-            <div className='back'>{emoji}</div>
+            {card.matched ? null : <div className="back">{card.emoji}</div>}
           </div>
         ))}
       </div>
