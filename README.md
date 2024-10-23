@@ -80,3 +80,26 @@ And then, using this object structure, updated the state initialization and corr
 4. Adjusted `handleClick` conditionals to make the code more human-readable. For example: instead of writing `if (move < 2)`, I wrote `if (move === 1)`. Instead of writing `setMove((move) => move + 1)`, I wrote `setMove(2)`.
 5. Updated `checkMatch` function to first check the `ids` of selected emojis. If the `ids` for `first` and `second` `selections` are the same: a message prints to indicate that the same card has been selected twice, the `selections` state is reset to `null` values, and function exection ends. User will then be able to take another turn.
    <img src='./frontend/public/progress/9.png' alt='Progress screenshot 9' width='500' height='500'>
+
+## October 21-23:
+
+1. Added `cards` to state in order to leverage state for managing their visibility:
+   ```
+   const [cards, setCards] = useState(
+    shuffledEmojis.map((emoji, index) => ({
+      id: index,
+      emoji: emoji,
+      matched: false
+    }))
+   ```
+   With that in place, cards/emojis can be displayed dynamically based on a conditional which checks if the `matched` property is `true` or `false`. (If true, the matched cards/emojis should no longer be visible).
+2. Began tracking the number of `matches` in both the state of the application and the UI itself so that users can see the number of turns they've taken vs. number of matches made. The state of the match counter is updated via the `checkMatch` function.
+3. Since we now have the `cards` in state (re: point 1), I modified the `checkMatch` function to update their `matched` property. For each `card` that has been matched, `matched` will now be set to `true`. Because the app is set up to render cards based on this value, cards/emojis will now disappear when matched.
+
+This (point 3) was done via the `prev` _(previous)_ React pattern. The **TLDR:** `useState` `set` functions (as established at state initialization, ie: `const [cards, setCards] = useState( [...]`) will have access to the _previous_ state via the `set` function.
+
+What this means is that we can copy the entirety of the previous state (`cards`) when we call `setCards` to update the state (typically using the spread operator: `...cards`). We can then add to/update the previous state as needed. You can read more about this in the React documentation [here](https://react.dev/reference/react/useState#updating-state-based-on-the-previous-state). Further discussion about this topic can be found on [Stack Overflow](https://stackoverflow.com/questions/55823296/reactjs-prevstate-in-the-new-usestate-react-hook).
+
+Changes to the `checkMatch` function:
+
+<img src='./frontend/public/progress/10.png' alt='Progress screenshot 10'>
