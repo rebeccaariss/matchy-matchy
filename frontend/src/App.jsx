@@ -79,6 +79,15 @@ function App() {
     if (firstSelection.emoji === secondSelection.emoji) {
       console.log('It\'s a match! 🥳')
       setMatches(matches + 1)
+      setCards((prevCards) =>
+        prevCards.map((card) =>
+          // During mapping, if the card is one of the matching pair, then copy all values using
+          // the spread operator and change 'matched' value of that card to 'true':
+          card.id === firstSelection.id || card.id === secondSelection.id
+            ? { ...card, matched: true }
+            : card
+        )
+      )
     } else {
       console.log('Sorry, no match. 😢')
     }
