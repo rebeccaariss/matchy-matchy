@@ -33,6 +33,8 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 // 4. Refactor for clarity in variable names, verbosity, structure, efficiency (see links)
 // Could add theme selection! Like click leaves for fall, crystal ball for witchy, controller for gaming, etc.
 
+// 5. What happens at the end of the game? New game? Overall score updated? What's the animation? Etc.
+
 const cardEmojis = [] // TODO: adjust variable names
 
 for (let i = 0; i < 6; i++) {
@@ -45,6 +47,7 @@ const shuffledEmojis = shuffle(cardEmojis)
 function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
+  const [matches, setMatches] = useState(0)
   const [selections, setSelections] = useState({
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
@@ -75,6 +78,7 @@ function App() {
     }
     if (firstSelection.emoji === secondSelection.emoji) {
       console.log('It\'s a match! 🥳')
+      setMatches(matches + 1)
     } else {
       console.log('Sorry, no match. 😢')
     }
@@ -113,6 +117,9 @@ function App() {
       <div className='counter'>
         <button>
           {turns} turns taken so far
+        </button>
+        <button>
+          {matches} matches
         </button>
       </div>
     </>
