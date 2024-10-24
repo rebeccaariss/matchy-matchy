@@ -79,6 +79,7 @@ And then, using this object structure, updated the state initialization and corr
 
 4. Adjusted `handleClick` conditionals to make the code more human-readable. For example: instead of writing `if (move < 2)`, I wrote `if (move === 1)`. Instead of writing `setMove((move) => move + 1)`, I wrote `setMove(2)`.
 5. Updated `checkMatch` function to first check the `ids` of selected emojis. If the `ids` for `first` and `second` `selections` are the same: a message prints to indicate that the same card has been selected twice, the `selections` state is reset to `null` values, and function exection ends. User will then be able to take another turn.
+
    <img src='./frontend/public/progress/9.png' alt='Progress screenshot 9' width='500' height='500'>
 
 ## October 21-23:
@@ -102,4 +103,7 @@ What this means is that we can copy the entirety of the previous state (`cards`)
 
 Changes to the `checkMatch` function:
 
-<img src='./frontend/public/progress/10.png' alt='Progress screenshot 10'>
+<img src='./frontend/public/progress/10.png' alt='Progress screenshot 10' width='700'>&nbsp;
+
+The app in its current state, with emojis disappearing on match and both the turn & match counters functioning:
+<img src='./frontend/public/progress/11.gif' alt='Progress screenshot 11' width='500' height='500'>
