@@ -43,12 +43,10 @@ button {
 :focus represents the state when the element is currently selected to receive input and
 :active represents the state when the element is currently being activated by the user.
 
-(https://stackoverflow.com/questions/1677990/what-is-the-difference-between-focus-and-active)
+(https://stackoverflow.com/questions/1677990/what-is-the-difference-between-focus-and-active) */
 
-TODO: the cards themselves need to be accessible, as in: you should be able to tab over
-them and use the return key to select instead of clicking!
-
-*/
+/* TODO: the cards themselves need to be accessible, as in: you should be able to tab over
+them and use the return key to select instead of clicking! */
 
 button:focus,
 button:focus-visible {

@@ -107,3 +107,13 @@ Changes to the `checkMatch` function:
 
 The app in its current state, with emojis disappearing on match and both the turn & match counters functioning:
 <img src='./frontend/public/progress/11.gif' alt='Progress screenshot 11' width='500' height='500'>
+
+## CSS NOTES
+
+[YouTube Tutorial](https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara)
+
+3:36: The main container simply holds all of the elements and determines the size of the card. .thecard holds the two front and back elements and also controls the mouse hover action with the hover pseudoclass. The front element is the front-facing element which shows us the default face. The back element is the reverse side of the card, which shows when a user hovers over the card. If you take away the preserve-3d value, all you get is a reversal of the front side of the card (the back doesn't show). It's easier to visualize this with text in the front of the card.
+
+Sandwich analogy: without preserve-3d, we only flip the top slice. With preserve-3d, we flip the entire sandwich. (What a great visual!!!)
+
+4:48: the backface-visibility: hidden; property (applied to "thefront" and "theback" both) controls the reverse side of just that div. Keeping either visible will conflict with the 3D layers and cause a flicker in the animation.
