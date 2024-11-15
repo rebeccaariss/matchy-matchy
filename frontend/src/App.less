@@ -101,10 +101,11 @@
 // From https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara:
 
 /* THE MAINCONTAINER HOLDS EVERYTHING */
-.maincontainer{
+.maincontainer {
   position: absolute;
-  width: 250px;
-  height: 320px;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 10px;
   background: none;
   top: 50%;
   left: 50%;
@@ -113,24 +114,32 @@
 }
 
 /* THE CARD HOLDS THE FRONT AND BACK FACES */
-.thecard{
+.thecard {
   position: relative;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 10px;
   transform-style: preserve-3d;
   transition: all 0.8s ease;
 }
 
 /* THE PSUEDO CLASS CONTROLS THE FLIP ON MOUSEOVER AND MOUSEOUT */
-.thecard:active{
+.thecard:active {
   transform: rotateY(180deg);
 }
 
 /* THE FRONT FACE OF THE CARD, WHICH SHOWS BY DEFAULT */
-.thefront{
+.cardback {
+  // pattern from https://www.magicpattern.design/tools/css-backgrounds:
+  background-color: #fbfbfb;
+  background-image:  linear-gradient(30deg, #9fd196 12%, transparent 12.5%, transparent 87%, #9fd196 87.5%, #9fd196), linear-gradient(150deg, #9fd196 12%, transparent 12.5%, transparent 87%, #9fd196 87.5%, #9fd196), linear-gradient(30deg, #9fd196 12%, transparent 12.5%, transparent 87%, #9fd196 87.5%, #9fd196), linear-gradient(150deg, #9fd196 12%, transparent 12.5%, transparent 87%, #9fd196 87.5%, #9fd196), linear-gradient(60deg, #9fd19677 25%, transparent 25.5%, transparent 75%, #9fd19677 75%, #9fd19677), linear-gradient(60deg, #9fd19677 25%, transparent 25.5%, transparent 75%, #9fd19677 75%, #9fd19677);
+  background-size: 20px 35px;
+  background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+  //
   position: absolute;
   top: 0;
   left: 0;
@@ -139,12 +148,14 @@
   border-radius: 10px;
   backface-visibility: hidden;
   overflow: hidden;
-  background: #ffc728;
-  color: #000;
+}
+
+.cardback:hover {
+  cursor: pointer;
 }
 
 /* THE BACK FACE OF THE CARD, WHICH SHOWS ON MOUSEOVER */
-.theback{
+.cardface {
   position: absolute;
   top: 0;
   left: 0;
@@ -153,27 +164,26 @@
   border-radius: 10px;
   backface-visibility: hidden;
   overflow: hidden;
-  background: #fafafa;
+  background-color: #fbfbfb;
   color: #333;
   text-align: center;
   transform: rotateY(180deg);
 }
 
-
 /*This block (starts here) is merely styling for the flip card, and is NOT an essential part of the flip code */
-.thefront h1, .theback h1{
-  font-family: 'zilla slab', sans-serif;
+.cardback h1, .cardface h1 {
   padding: 30px;
   font-weight: bold;
   font-size: 24px;
   text-align: center;
 }
 
-.thefront p, .theback p{
-  font-family: 'zilla slab', sans-serif;
-  padding: 30px;
-  font-weight: normal;
-  font-size: 12px;
-  text-align: center;
-}
+// TODO: ❗️ Turn off text highlighting for the emojis! As in: when you click and drag across the character to copy and paste.
+
+// .cardback p, .cardface p {
+//   padding: 30px;
+//   font-weight: normal;
+//   font-size: 12px;
+//   text-align: center;
+// }
 /*This block (ends here) is merely styling for the flip card, and is NOT an essential part of the flip code */
