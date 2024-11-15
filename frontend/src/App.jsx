@@ -115,7 +115,7 @@ function App() {
         {cards.map((card) => (
           <div 
             key={card.id}
-            className='card card-wrapper flip-left' 
+            className='card' 
             onClick={() => handleClick(card.id, card.emoji)}
           >
             {/* <div className='front'>*</div> */}
@@ -124,6 +124,7 @@ function App() {
         ))}
       </div>
       <div className='counter'>
+        {/* TODO: Consider what is appropriate semantic HTML for counters: */}
         <button>
           {turns} turns taken so far
         </button>
