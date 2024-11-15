@@ -108,7 +108,7 @@ Changes to the `checkMatch` function:
 The app in its current state, with emojis disappearing on match and both the turn & match counters functioning:
 <img src='./frontend/public/progress/11.gif' alt='Progress screenshot 11' width='500' height='500'>
 
-## CSS NOTES
+## _CSS NOTES: Notes to be edited_
 
 [YouTube Tutorial](https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara)
 
@@ -117,3 +117,5 @@ The app in its current state, with emojis disappearing on match and both the tur
 Sandwich analogy: without preserve-3d, we only flip the top slice. With preserve-3d, we flip the entire sandwich. (What a great visual!!!)
 
 4:48: the backface-visibility: hidden; property (applied to "thefront" and "theback" both) controls the reverse side of just that div. Keeping either visible will conflict with the 3D layers and cause a flicker in the animation.
+
+<img src='./frontend/public/progress/12.gif' alt='Progress screenshot 12' width='500' height='475'>

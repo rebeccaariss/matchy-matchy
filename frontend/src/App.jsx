@@ -59,6 +59,7 @@ function App() {
       matched: false
     }))
   )
+  const [isFlipped, setIsFlipped] = useState(false)
 
   useEffect(() => {
     if (selections.first.emoji && selections.second.emoji) {
@@ -108,6 +109,10 @@ function App() {
     }
   }
 
+  const handleFlip = () => {
+    setIsFlipped((prevState) => !prevState) // this essentially functions like an on/off switch: as opposed to setIsFlipped(true), where we can only flip the card once, this allows toggling so that every time the card is clicked it flips (regardless of which side is facing forward). what you call it doesn't matter as long as it contains keyword "prev".
+  }
+
   return (
     <>
       <h1>matchy matchy 👯‍♀️</h1>
@@ -134,7 +139,10 @@ function App() {
       </div>
       {/* From https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara */}
       <div className="maincontainer">
-        <div className="thecard">
+        <div 
+          className={`thecard ${isFlipped ? 'isflipped' : ''}`}
+          onClick={handleFlip}
+        >
           <div className="cardback"></div>
           <div className="cardface">
             <h1>Card Face</h1>
