@@ -128,3 +128,5 @@ position: static;
 }_
 
 https://www.w3schools.com/css/css_positioning.asp
+
+<img src='./frontend/public/progress/13.png' alt='Progress screenshot 13: colour-blocking'>
