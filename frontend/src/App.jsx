@@ -115,38 +115,38 @@ function App() {
 
   return (
     <>
-    <div className='main'>
-      <h1>matchy matchy 👯‍♀️</h1>
-      <div className='cards'>
-        {cards.map((card) => (
-          <div key={card.id} className='maincontainer'>
-            <div 
-              // key
-              // className='card' 
-              // onClick={() => handleClick(card.id, card.emoji)}
-              className={`thecard ${isFlipped ? 'isflipped' : ''}`}
-              onClick={handleFlip}
-            >
-              {/* {card.matched ? null : <div className='back'>{card.emoji}</div>} */}
-              <div className='cardback'></div>
-              <div className='cardface'>
-                <h1>Card Face</h1>
-                <p>This will show the emoji.</p>
+      <div className='main'>
+        <h1>matchy matchy 👯‍♀️</h1>
+        <div className='cards'>
+          {cards.map((card) => (
+            <div key={card.id} className='maincontainer'>
+              <div 
+                // key
+                // className='card' 
+                // onClick={() => handleClick(card.id, card.emoji)}
+                className={`thecard ${isFlipped ? 'isflipped' : ''}`}
+                onClick={handleFlip}
+              >
+                {/* {card.matched ? null : <div className='back'>{card.emoji}</div>} */}
+                <div className='cardback'></div>
+                <div className='cardface'>
+                  <h1>Card Face</h1>
+                  <p>This will show the emoji.</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className='counter'>
+          {/* TODO: Consider what is appropriate semantic HTML for counters: */}
+          <button>
+            {turns} turns taken so far
+          </button>
+          <button>
+            {matches} matches
+          </button>
+        </div>
       </div>
-      <div className='counter'>
-        {/* TODO: Consider what is appropriate semantic HTML for counters: */}
-        <button>
-          {turns} turns taken so far
-        </button>
-        <button>
-          {matches} matches
-        </button>
-      </div>
-    </div>
     </>
   )
 }
