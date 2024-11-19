@@ -119,3 +119,12 @@ Sandwich analogy: without preserve-3d, we only flip the top slice. With preserve
 4:48: the backface-visibility: hidden; property (applied to "thefront" and "theback" both) controls the reverse side of just that div. Keeping either visible will conflict with the 3D layers and cause a flicker in the animation.
 
 <img src='./frontend/public/progress/12.gif' alt='Progress screenshot 12' width='500' height='475'>
+
+CSS Commit Nov 18: Add notes re: _grid-template-columns: repeat(4, 7rem);_
+
+Also re:
+_.maincontainer {
+position: static;
+}_
+
+https://www.w3schools.com/css/css_positioning.asp

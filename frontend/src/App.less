@@ -1,8 +1,16 @@
+// TODO: Starter code?
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: blue;
+}
+
+.main {
+  justify-content: center;
+  text-align: center;
+  background-color: red;
 }
 
 .counter {
@@ -10,11 +18,21 @@
   user-select: none;
 }
 
+// .cards {
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   width: 50rem;
+// }
+
 .cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(4, 7rem);
+  column-gap: 3.75rem;
+  row-gap: 3.75rem;
   width: 50rem;
+  padding: 3rem;
+  justify-content: center;
 }
 
 .card {
@@ -46,7 +64,7 @@
 
 /* THE MAINCONTAINER HOLDS EVERYTHING (components of a single card) */
 .maincontainer {
-  position: absolute;
+  position: static;
   width: 7rem;
   height: 7rem;
   border-radius: 10px;
@@ -54,7 +72,6 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
 /* THE CARD HOLDS THE FRONT AND BACK FACES */

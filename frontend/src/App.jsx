@@ -115,16 +115,25 @@ function App() {
 
   return (
     <>
+    <div className='main'>
       <h1>matchy matchy 👯‍♀️</h1>
       <div className='cards'>
         {cards.map((card) => (
-          <div 
-            key={card.id}
-            className='card' 
-            onClick={() => handleClick(card.id, card.emoji)}
-          >
-            {/* <div className='front'>*</div> */}
-            {card.matched ? null : <div className="back">{card.emoji}</div>}
+          <div key={card.id} className='maincontainer'>
+            <div 
+              // key
+              // className='card' 
+              // onClick={() => handleClick(card.id, card.emoji)}
+              className={`thecard ${isFlipped ? 'isflipped' : ''}`}
+              onClick={handleFlip}
+            >
+              {/* {card.matched ? null : <div className='back'>{card.emoji}</div>} */}
+              <div className='cardback'></div>
+              <div className='cardface'>
+                <h1>Card Face</h1>
+                <p>This will show the emoji.</p>
+              </div>
+            </div>
           </div>
         ))}
       </div>
@@ -137,20 +146,7 @@ function App() {
           {matches} matches
         </button>
       </div>
-      {/* From https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara */}
-      <div className="maincontainer">
-        <div 
-          className={`thecard ${isFlipped ? 'isflipped' : ''}`}
-          onClick={handleFlip}
-        >
-          <div className="cardback"></div>
-          <div className="cardface">
-            <h1>Card Face</h1>
-            <p>This will show the emoji.</p>
-          </div>
-        </div>
-      </div>
-      {/* ------------------------------------------------------------------------ */}
+    </div>
     </>
   )
 }
