@@ -48,7 +48,6 @@ function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
   const [matches, setMatches] = useState(0)
-  const [isFlipped, setIsFlipped] = useState(false)
   const [selections, setSelections] = useState({
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
@@ -92,6 +91,15 @@ function App() {
       )
     } else {
       console.log('Sorry, no match. 😢')
+      setTimeout(() => {
+        setCards((prevCards) =>
+          prevCards.map((card) =>
+            card.id === firstSelection.id || card.id === secondSelection.id
+              ? { ...card, isFlipped: false }
+              : card
+          )
+        )
+      }, 1000)
     }
     setSelections({
       first: { id: null, emoji: null },
@@ -100,6 +108,12 @@ function App() {
   }
 
   const handleClick = (id, emoji) => {
+    setCards((prevCards) =>
+      prevCards.map((card) =>
+        card.id === id ? { ...card, isFlipped: true } : card
+      )
+    )
+
     if (move === 1) { // Writing it this way makes the code easier to understand: "move 1" is more human-readable
       setSelections({...selections, first: {id, emoji}})
       setMove(2)
@@ -122,13 +136,9 @@ function App() {
           {cards.map((card) => (
             <div key={card.id} className='cardcontainer'>
               <div 
-                // key
-                // className='card' 
-                // onClick={() => handleClick(card.id, card.emoji)}
-                className={`thecard ${isFlipped ? 'isflipped' : ''}`}
-                onClick={handleFlip}
+                className={`thecard ${card.isFlipped ? 'isflipped' : ''}`}
+                onClick={() => handleClick(card.id, card.emoji)}
               >
-                {/* {card.matched ? null : <div className='back'>{card.emoji}</div>} */}
                 <div className='cardback'></div>
                 <div className='cardface'>
                   <h1>{card.emoji}</h1>
