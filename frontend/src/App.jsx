@@ -48,6 +48,7 @@ function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
   const [matches, setMatches] = useState(0)
+  const [isFlipped, setIsFlipped] = useState(false)
   const [selections, setSelections] = useState({
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
@@ -56,10 +57,10 @@ function App() {
     shuffledEmojis.map((emoji, index) => ({
       id: index,
       emoji: emoji,
-      matched: false
+      matched: false,
+      isFlipped: false
     }))
   )
-  const [isFlipped, setIsFlipped] = useState(false)
 
   useEffect(() => {
     if (selections.first.emoji && selections.second.emoji) {
@@ -119,7 +120,7 @@ function App() {
         <h1>matchy matchy 👯‍♀️</h1>
         <div className='cards'>
           {cards.map((card) => (
-            <div key={card.id} className='maincontainer'>
+            <div key={card.id} className='cardcontainer'>
               <div 
                 // key
                 // className='card' 
@@ -130,8 +131,7 @@ function App() {
                 {/* {card.matched ? null : <div className='back'>{card.emoji}</div>} */}
                 <div className='cardback'></div>
                 <div className='cardface'>
-                  <h1>Card Face</h1>
-                  <p>This will show the emoji.</p>
+                  <h1>{card.emoji}</h1>
                 </div>
               </div>
             </div>

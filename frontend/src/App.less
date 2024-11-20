@@ -62,8 +62,8 @@
 
 // From https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara:
 
-/* THE MAINCONTAINER HOLDS EVERYTHING (components of a single card) */
-.maincontainer {
+/* THE MAINCONTAINER HOLDS EVERYTHING (components of a single card) (NOTE: renamed to cardcontainer for more clarity) */
+.cardcontainer {
   position: static;
   width: 7rem;
   height: 7rem;
@@ -117,6 +117,9 @@
 
 /* THE BACK FACE OF THE CARD, WHICH SHOWS ON MOUSEOVER */
 .cardface {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
@@ -139,11 +142,8 @@
 
 
 /*This block (starts here) is merely styling for the flip card, and is NOT an essential part of the flip code */
-.cardback h1, .cardface h1 {
-  padding: 30px;
-  font-weight: bold;
-  font-size: 24px;
-  text-align: center;
+.cardface h1 {
+  font-size: 5rem;
 }
 
 // TODO: ❗️ Turn off text highlighting for the emojis! As in: when you click and drag across the character to copy and paste.
