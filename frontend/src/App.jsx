@@ -65,6 +65,23 @@ function App() {
     }))
   )
 
+    // matcha matcha confetti for later:
+    const scalar = 3
+    const leaves = confetti.shapeFromText({ text: '🍃', scalar })
+  
+    const handleCelebrate = () => {
+      confetti({
+        // shapes: [leaves],
+        // scalar,
+        particleCount: 125,
+        spread: 160
+      })
+    }
+
+  if ((matches * 2) === cardEmojis.length) {
+    handleCelebrate()
+  }
+
   useEffect(() => {
     if (selections.first.emoji && selections.second.emoji) {
       checkMatch(selections.first, selections.second)
@@ -132,19 +149,6 @@ function App() {
     setIsFlipped((prevState) => !prevState) // this essentially functions like an on/off switch: as opposed to setIsFlipped(true), where we can only flip the card once, this allows toggling so that every time the card is clicked it flips (regardless of which side is facing forward). what you call it doesn't matter as long as it contains keyword "prev".
   }
 
-  // matcha matcha confetti for later:
-  const scalar = 3
-  const leaves = confetti.shapeFromText({ text: '🍃', scalar })
-
-  const handleCelebrate = () => {
-    confetti({
-      // shapes: [leaves],
-      // scalar,
-      particleCount: 125,
-      spread: 160
-    })
-  }
-
   return (
     <>
       <div className='main'>
@@ -171,9 +175,6 @@ function App() {
           </button>
           <button>
             {matches} matches
-          </button>
-          <button onClick={handleCelebrate} style={{ padding: '10px 20px', fontSize: '16px' }}>
-            Wooooo confetti! 🎉
           </button>
         </div>
       </div>
