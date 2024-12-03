@@ -130,3 +130,20 @@ position: static;
 https://www.w3schools.com/css/css_positioning.asp
 
 <img src='./frontend/public/progress/13.png' alt='Progress screenshot 13: colour-blocking'>
+
+## Nov 25-29
+
+Notes to be added:
+
+- Confetti
+- Testing refresher
+- Deployment challenges
+
+## Dec 2
+
+Building a reset function to be triggered after click to reset game (initially: after confetti):
+
+1. Reset state variables
+2. Shuffle deck to reinitialize emojis in the deck
+3. Reset counters: turns, matches, selections.
+4. Bundle all of these things into a single function.

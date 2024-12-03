@@ -65,18 +65,33 @@ function App() {
     }))
   )
 
-    // matcha matcha confetti for later:
-    const scalar = 3
-    const leaves = confetti.shapeFromText({ text: '🍃', scalar })
-  
-    const handleCelebrate = () => {
-      confetti({
-        // shapes: [leaves],
-        // scalar,
-        particleCount: 125,
-        spread: 160
-      })
-    }
+  // matcha matcha confetti for later:
+  const scalar = 3
+  const leaves = confetti.shapeFromText({ text: '🍃', scalar })
+
+  const handleCelebrate = () => {
+    confetti({
+      // shapes: [leaves],
+      // scalar,
+      particleCount: 125,
+      spread: 160
+    })
+
+    // For now: reset game after confetti
+    // TODO: reset game after button click
+    setTimeout(resetGame, 3000)
+  }
+
+  const resetGame = () => {
+    setMove(1)
+    setTurns(0)
+    setMatches(0)
+    setSelections({
+      first: { id: null, emoji: null },
+      second: { id: null, emoji: null },
+    })
+    alert("Game has been reset")
+  }
 
   if ((matches * 2) === cardEmojis.length) {
     handleCelebrate()
