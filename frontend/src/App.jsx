@@ -39,15 +39,6 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 
 // 5. What happens at the end of the game? New game? Overall score updated? What's the animation? Etc.
 
-const cardEmojis = [] // TODO: adjust variable names
-
-for (let i = 0; i < 6; i++) {
-  cardEmojis.push(emojis[i])
-  cardEmojis.push(emojis[i])
-}
-
-const shuffledEmojis = shuffle(cardEmojis)
-
 function App() {
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
@@ -56,14 +47,27 @@ function App() {
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
   })
-  const [cards, setCards] = useState(
-    shuffledEmojis.map((emoji, index) => ({
+
+  const cardEmojis = [] // TODO: adjust variable names
+
+  const shuffleCards = () => {
+    for (let i = 0; i < 6; i++) { // Generates 12 card game (6 pairs)
+      cardEmojis.push(emojis[i])
+      cardEmojis.push(emojis[i])
+    }
+
+    const shuffledEmojis = shuffle(cardEmojis)
+
+    // Previously, this was done at the state declaration for cards:
+    return shuffledEmojis.map((emoji, index) => ({
       id: index,
       emoji: emoji,
       matched: false,
       isFlipped: false
     }))
-  )
+  }
+
+  const [cards, setCards] = useState(shuffleCards())
 
   // matcha matcha confetti for later:
   const scalar = 3
@@ -90,7 +94,8 @@ function App() {
       first: { id: null, emoji: null },
       second: { id: null, emoji: null },
     })
-    alert("Game has been reset")
+    setCards(shuffleCards())
+    // alert("Game has been reset")
   }
 
   if ((matches * 2) === cardEmojis.length) {
