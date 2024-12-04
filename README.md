@@ -147,3 +147,15 @@ Building a reset function to be triggered after click to reset game (initially: 
 2. Shuffle deck to reinitialize emojis in the deck
 3. Reset counters: turns, matches, selections.
 4. Bundle all of these things into a single function.
+
+# Dec 3
+
+- Fixed an issue where a second array of 12 cards was being rendered (initial array was not cleared/reset). The fix: give the cards their own dedicated state, reset with `shuffleCards` function at end of game as needed.
+- Fixed an issue where, after the above fix, confetti was being triggered on an endless loop. The fix: `useEffect` now checks `if ((matches * 2) === cards.length)`. `useEffect` essentially allows us to _React_ to changes in the state of the game. In the code block, `useEffect` is "watching" for `matches` and `cards`, and whenever either chamges, React checks the condition specified.
+
+The syntax, per React documentation, is: `useEffect(setup, dependencies?)`. The docs describe the hook as "[synchronizing] a component with an external system" (i.e. a non-React component).
+[React docs](https://react.dev/reference/react/useEffect)
+
+Before this fix, confetti was being triggered repeatedly because its logic didn't depend on the game's state. The logic was not tied to or dependent upon state updates. Prior to giving `cards` their own dedicated state, the confetti was triggered as expected. My suspicion is that the confetti logic started malfunctioning because the `cards` state was not fully cleared/reset within the React lifecycle (which can behave in unexpected ways, to us humans). The condition for triggering confetti (`(matches * 2) === cards.length`) depends on an up-to-date state of the game, and without running `useEffect`, React does not know when to check the conditional again.
+
+Again: `useEffect` watches for changes in specific variables (dependencies, per the syntax/docs), and whenever those variables change, it runs the effect (in this case, checking a condition and executing `handleCelebrate` if the condition is met).

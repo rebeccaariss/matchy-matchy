@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import './App.less'
 import confetti from 'canvas-confetti'
 
+// TODO: clicking the edge of a card results in a number of undesirable behaviours (card doesn't flip completely, sometimes one will stay flipped)
+
 const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -40,6 +42,7 @@ const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', 
 // 5. What happens at the end of the game? New game? Overall score updated? What's the animation? Etc.
 
 function App() {
+  const [cardEmojis, setCardEmojis] = useState([])
   const [move, setMove] = useState(1)
   const [turns, setTurns] = useState(0)
   const [matches, setMatches] = useState(0)
@@ -48,15 +51,15 @@ function App() {
     second: { id: null, emoji: null }
   })
 
-  const cardEmojis = [] // TODO: adjust variable names
-
   const shuffleCards = () => {
+    const newCardEmojis = []
+
     for (let i = 0; i < 6; i++) { // Generates 12 card game (6 pairs)
-      cardEmojis.push(emojis[i])
-      cardEmojis.push(emojis[i])
+      newCardEmojis.push(emojis[i])
+      newCardEmojis.push(emojis[i])
     }
 
-    const shuffledEmojis = shuffle(cardEmojis)
+    const shuffledEmojis = shuffle(newCardEmojis)
 
     // Previously, this was done at the state declaration for cards:
     return shuffledEmojis.map((emoji, index) => ({
@@ -98,9 +101,11 @@ function App() {
     // alert("Game has been reset")
   }
 
-  if ((matches * 2) === cardEmojis.length) {
-    handleCelebrate()
-  }
+  useEffect(() => {
+    if ((matches * 2) === cards.length) {
+      handleCelebrate()
+    }
+  }, [matches, cards])
 
   useEffect(() => {
     if (selections.first.emoji && selections.second.emoji) {
