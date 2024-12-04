@@ -159,3 +159,7 @@ The syntax, per React documentation, is: `useEffect(setup, dependencies?)`. The 
 Before this fix, confetti was being triggered repeatedly because its logic didn't depend on the game's state. The logic was not tied to or dependent upon state updates. Prior to giving `cards` their own dedicated state, the confetti was triggered as expected. My suspicion is that the confetti logic started malfunctioning because the `cards` state was not fully cleared/reset within the React lifecycle (which can behave in unexpected ways, to us humans). The condition for triggering confetti (`(matches * 2) === cards.length`) depends on an up-to-date state of the game, and without running `useEffect`, React does not know when to check the conditional again.
 
 Again: `useEffect` watches for changes in specific variables (dependencies, per the syntax/docs), and whenever those variables change, it runs the effect (in this case, checking a condition and executing `handleCelebrate` if the condition is met).
+
+### Current state of the game:
+
+<img src='./frontend/public/progress/14.gif' alt='Progress screenshot 14' width='500' height='475'>
