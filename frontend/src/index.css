@@ -6,7 +6,8 @@
   color-scheme: light dark;
   color: rgba(74, 74, 73);
   /* background-color: #f0f9f0; */
-  background-color: #afcdaf;
+  /* background-color: #afcdaf; */
+  background-color: rgba(4, 22, 34, 90);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

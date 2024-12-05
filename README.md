@@ -163,3 +163,7 @@ Again: `useEffect` watches for changes in specific variables (dependencies, per 
 ### Current state of the game:
 
 <img src='./frontend/public/progress/14.gif' alt='Progress screenshot 14' width='500' height='475'>
+
+# Dec 4
+
+- Played with CSS dark mode colours today; just some minor edits as I attended the [Girl Geek X Elevate Conference](https://girlgeek.io/conferences/elevate-2024-dec/) and saw my mentor today. Definitely check it out! They always have a fantastic lineup of speakers.
