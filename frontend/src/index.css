@@ -4,7 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(74, 74, 73);
+  /* color: rgba(74, 74, 73); */
+  color: rgb(248, 238, 253);
   /* background-color: #f0f9f0; */
   /* background-color: #afcdaf; */
   background-color: rgba(4, 22, 34, 90);
