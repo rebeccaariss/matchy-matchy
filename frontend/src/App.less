@@ -6,27 +6,32 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  background-color: blue;
+  // background-color: blue;
 }
 
 .main {
-  text-align: center;
-  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // background-color: red;
 }
 
-.counter {
+div.counters {
+  width: 100%;
+  display: flex;
+  justify-content: center;
   padding: 2em;
   user-select: none;
 }
 
-// .cards {
-//   display: flex;
-//   flex-wrap: wrap;
-//   justify-content: center;
-//   width: 50rem;
-// }
+#turns, #matches {
+  width: 10rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 
 .cards {
+  margin-left: 3rem;
   display: grid;
   grid-template-columns: repeat(4, 7rem);
   column-gap: 3.75rem;
@@ -53,6 +58,7 @@
 .card:hover {
   cursor: pointer;
   box-shadow: 0 5px 30px 5px rgba(63, 81, 90, 0.5);
+  // TODO: Hover styles should be visible in dark mode as well.
 }
 
 /* TODO: add media queries for resizing AND resizing for number of cards on screen */
@@ -191,8 +197,3 @@
 //   text-align: center;
 // }
 /*This block (ends here) is merely styling for the flip card, and is NOT an essential part of the flip code */
-
-div.counter {
-  display: flex;
-  justify-content: space-around;
-}

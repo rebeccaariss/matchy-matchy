@@ -193,12 +193,12 @@ function App() {
             </div>
           ))}
         </div>
-        <div className='counter'>
+        <div className='counters'>
           {/* TODO: Consider what is appropriate semantic HTML for counters: */}
-          <button>
+          <button id='turns'>
             {turns} turns taken so far
           </button>
-          <button>
+          <button id='matches'>
             {matches} matches
           </button>
         </div>

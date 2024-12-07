@@ -167,3 +167,14 @@ Again: `useEffect` watches for changes in specific variables (dependencies, per 
 # Dec 4-5
 
 - Played with CSS dark mode colours; just some minor edits as I attended the [Girl Geek X Elevate Conference](https://girlgeek.io/conferences/elevate-2024-dec/) and met with my [QueerTech](https://queertech.org/feed) mentor. I highly recommend both organizations! Both organizations' conferences have had a fantastic lineup of speakers & topics and have been invaluable to me as I learn more about the industry.
+
+# Dec 6
+
+The cards have been slightly off center, I think due to the grid styling (notice how they're shifted slightly to the left relative to the `cards` div):
+<img src='./frontend/public/progress/15.png' alt='Progress screenshot 15'>
+
+Colour-blocking sections of the app has been really helpful for visualizing containing elements and styling. Added `margin-left` rule for the `cards` container in order to center the cards collection with the header `h1` and counters:
+<img src='./frontend/public/progress/16.png' alt='Progress screenshot 16'>
+
+I have also adjusted the width of the counters so that they are of equal width and spacing and further explored the "dark mode" colour theme. This is the app in its current state:
+<img src='./frontend/public/progress/17.png' alt='Progress screenshot 17'>
