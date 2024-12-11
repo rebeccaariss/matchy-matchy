@@ -9,6 +9,60 @@
   // background-color: blue;
 }
 
+// ------------------------------------------------------------------------------------------------------------------------
+// CSS toggle styles with credit to Marcus Bernette on Codepen.io: https://codepen.io/mburnette/pen/LxNxNg
+// Original CSS has been modified for customization in this project.
+input[type=checkbox]{
+	height: 0;
+	width: 0;
+	visibility: hidden;
+}
+
+label {
+	cursor: pointer;
+	text-indent: -9999px;
+	width: 200px;
+	height: 100px;
+	background: #bada55;
+	display: block;
+	border-radius: 100px;
+	position: relative;
+}
+
+label:after {
+	content: '';
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 90px;
+	height: 90px;
+	background: #fff;
+	border-radius: 90px;
+	transition: 0.3s;
+}
+
+input:checked + label {
+	background: grey; // could make this the dark mode colour
+}
+
+input:checked + label:after {
+	left: calc(100% - 5px);
+	transform: translateX(-100%);
+}
+
+label:active:after {
+	width: 130px;
+}
+
+// centering
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+// ------------------------------------------------------------------------------------------------------------------------
+
 .main {
   display: flex;
   flex-direction: column;
@@ -24,6 +78,7 @@ div.counters {
   user-select: none;
 }
 
+// TODO: move these up so that they are closer to the cards. I think this makes more visual sense.
 #turns, #matches {
   width: 10rem;
   margin-left: 1rem;

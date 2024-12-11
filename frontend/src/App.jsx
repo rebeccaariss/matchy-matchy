@@ -176,6 +176,9 @@ function App() {
 
   return (
     <>
+      <nav>
+        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+      </nav>
       <div className='main'>
         <h1>matchy matchy 👯‍♀️</h1>
         <div className='cards'>
@@ -196,7 +199,7 @@ function App() {
         <div className='counters'>
           {/* TODO: Consider what is appropriate semantic HTML for counters: */}
           <button id='turns'>
-            {turns} turns taken so far
+            {turns} turns
           </button>
           <button id='matches'>
             {matches} matches
