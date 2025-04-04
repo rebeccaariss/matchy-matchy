@@ -177,11 +177,11 @@ function App() {
 
   return (
     <>
-      <nav>
-        <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
-      </nav>
       <div className='main'>
-        <h1>matchy matchy 👯‍♀️</h1>
+        <nav>
+          <h1>matchy matchy 👯‍♀️</h1>
+          <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+        </nav>
         <div className='cards'>
           {cards.map((card) => (
             <div key={card.id} className='cardcontainer'>
