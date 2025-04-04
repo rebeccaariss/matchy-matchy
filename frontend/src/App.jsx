@@ -90,7 +90,12 @@ function App() {
   }
 
   const resetGame = () => {
-    alert('Do you want to begin a new game?')
+    Swal.fire({ // says not working but it is ~~~
+      title: 'Woohoo!',
+      text: 'Do you want to begin a new game?',
+      icon: 'success',
+      confirmButtonText: 'Start'
+    })
     setMove(1)
     setTurns(0)
     setMatches(0)
