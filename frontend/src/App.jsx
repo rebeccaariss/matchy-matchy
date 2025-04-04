@@ -90,6 +90,7 @@ function App() {
   }
 
   const resetGame = () => {
+    alert('Do you want to begin a new game?')
     setMove(1)
     setTurns(0)
     setMatches(0)
