@@ -12,8 +12,7 @@ const shuffle = (array) => {
   return array
 }
 
-  // omg could have an animated toggle switch to toggle on/off the green tones and call it "matcha matcha" by stylizing the text to strikethrough, replacing it with matcha matcha 🍵, and doing tea themed emojis 🙃
-  // const matchaMatchaEmojis = shuffle(['🍵', '🌿', '🫖', '🧋', '🇯🇵', '🗾', '🎍', '💚', '🪴', '🍃', '🌱', '🏯', '🍡', '🌾', '🌸', '✨', '🌊', '🗻', '🚛', '♨️'])
+const matchaMojis = shuffle(['🍵', '🌿', '🫖', '🧋', '🇯🇵', '🗾', '🎍', '💚', '🪴', '🍃', '🌱', '🏯', '🍡', '🌾', '🌸', '✨', '🌊', '🗻', '🚛', '♨️'])
 
 const emojis = shuffle(['👽', '🌸', '🍄', '🍩', '🧋', '🍉', '🌿', '🦥', '🐙', '🦄', '🐸', '🦊', '🐻‍❄️', '👀', '👻', '😼', '🤠', '😎', '🤓', '✨', '🙈', '🙉', '🦕', '🦖', '🦭', '🦡', '🦨', '🦝', '🍄‍🟫', '🌈', '🎸', '🔮', '📚', '💾', '🎮', '👾', '💻', '🍂', '🤘', '💀'])
 // Currently 40 emojis
@@ -56,8 +55,13 @@ function App() {
     const newCardEmojis = []
 
     for (let i = 0; i < 6; i++) { // Generates 12 card game (6 pairs)
-      newCardEmojis.push(emojis[i])
-      newCardEmojis.push(emojis[i])
+      if (isMatchaMatcha) {
+        newCardEmojis.push(matchaMojis[i])
+        newCardEmojis.push(matchaMojis[i])
+      } else if (!isMatchaMatcha) {
+        newCardEmojis.push(emojis[i])
+        newCardEmojis.push(emojis[i])
+      }
     }
 
     const shuffledEmojis = shuffle(newCardEmojis)
@@ -72,6 +76,11 @@ function App() {
   }
 
   const [cards, setCards] = useState(shuffleCards())
+  // We need useEffect here because otherwise the cards/emojis would only render at initial app rendering:
+  useEffect(() => {
+    setCards(shuffleCards())
+  }, [isMatchaMatcha])
+
 
   // matcha matcha confetti for later:
   const scalar = 3
