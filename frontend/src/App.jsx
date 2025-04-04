@@ -50,6 +50,7 @@ function App() {
     first: { id: null, emoji: null },
     second: { id: null, emoji: null }
   })
+  const [isMatchaMatcha, setIsMatchaMatcha] = useState(false)
 
   const shuffleCards = () => {
     const newCardEmojis = []
@@ -184,8 +185,19 @@ function App() {
     <>
       <div className='main'>
         <nav>
-          <h1>matchy matchy 👯‍♀️</h1>
-          <input type="checkbox" id="switch" /><label for="switch">Toggle</label>
+          <h1>{isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}</h1>
+          <input 
+            type="checkbox"
+            id="switch"
+            checked={isMatchaMatcha}
+            onChange={() => setIsMatchaMatcha(!isMatchaMatcha)}
+            title={isMatchaMatcha ? 'Play matchy matchy 👯‍♀️' : 'Play matcha matcha 🍵'}
+            alt={isMatchaMatcha ? 'matcha matcha' : 'matchy matchy'}/>
+          <label htmlFor="switch">
+            {isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}
+          </label>
+          {/* TODO: confirm correct logic for label here. */}
+          {/* TODO: smoother animation for transition between titles */}
         </nav>
         <div className='cards'>
           {cards.map((card) => (
