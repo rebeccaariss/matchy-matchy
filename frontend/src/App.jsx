@@ -87,12 +87,18 @@ function App() {
   const leaves = confetti.shapeFromText({ text: '🍃', scalar })
 
   const handleCelebrate = () => {
-    confetti({
-      // shapes: [leaves],
-      // scalar,
-      particleCount: 125,
-      spread: 160
-    })
+    isMatchaMatcha ?
+      confetti({
+        shapes: [leaves],
+        scalar,
+        particleCount: 125,
+        spread: 160
+      })
+    :
+      confetti({
+        particleCount: 125,
+        spread: 160
+      })
 
     // For now: reset game after confetti
     // TODO: reset game after button click
