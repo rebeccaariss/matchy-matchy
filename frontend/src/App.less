@@ -6,7 +6,6 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  // background-color: blue;
 }
 
 nav {
@@ -66,6 +65,7 @@ body {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+  user-select: none;
 }
 // ------------------------------------------------------------------------------------------------------------------------
 
@@ -73,7 +73,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // background-color: red;
 }
 
 div.counters {
@@ -85,10 +84,14 @@ div.counters {
 }
 
 // TODO: move these up so that they are closer to the cards. I think this makes more visual sense.
-#turns, #matches {
+#turns, #matches, #reset-game {
   width: 10rem;
   margin-left: 1rem;
   margin-right: 1rem;
+}
+
+#reset-game:hover {
+  cursor: pointer;
 }
 
 .cards {

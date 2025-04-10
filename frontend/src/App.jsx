@@ -114,9 +114,9 @@ function App() {
 
   const resetGame = () => {
     Swal.fire({ // says not working but it is ~~~
-      title: 'Woohoo!',
+      title: `Turns: ${turns} \n Matches: ${matches}`,
       text: 'Do you want to begin a new game?',
-      icon: 'success',
+      // icon: 'success',
       confirmButtonText: 'Start'
     })
     setMove(1)
@@ -207,16 +207,16 @@ function App() {
     <>
       <div className={`main ${isMatchaMatcha ? 'matcha-mode' : 'matchy-mode'}`}>
         <nav>
-          <h1>{isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}</h1>
+          <h1>{isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 🌸'}</h1>
           <input 
             type="checkbox"
             id="switch"
             checked={isMatchaMatcha}
             onChange={() => setIsMatchaMatcha(!isMatchaMatcha)}
-            title={isMatchaMatcha ? 'Play matchy matchy 👯‍♀️' : 'Play matcha matcha 🍵'}
+            title={isMatchaMatcha ? 'Play matchy matchy 🌸' : 'Play matcha matcha 🍵'}
           />
           <label htmlFor="switch">
-            {isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}
+            {isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 🌸'}
           </label>
           {/* TODO: confirm correct logic for label here. */}
           {/* TODO: smoother animation for transition between titles */}
@@ -243,6 +243,9 @@ function App() {
           </button>
           <button id='matches'>
             {matches} matches
+          </button>
+          <button id='reset-game' onClick={() => resetGame()}>
+            Start over
           </button>
         </div>
       </div>
