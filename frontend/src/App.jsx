@@ -205,7 +205,7 @@ function App() {
 
   return (
     <>
-      <div className='main'>
+      <div className={`main ${isMatchaMatcha ? 'matcha-mode' : 'matchy-mode'}`}>
         <nav>
           <h1>{isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}</h1>
           <input 
@@ -214,7 +214,7 @@ function App() {
             checked={isMatchaMatcha}
             onChange={() => setIsMatchaMatcha(!isMatchaMatcha)}
             title={isMatchaMatcha ? 'Play matchy matchy 👯‍♀️' : 'Play matcha matcha 🍵'}
-            alt={isMatchaMatcha ? 'matcha matcha' : 'matchy matchy'}/>
+          />
           <label htmlFor="switch">
             {isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}
           </label>
