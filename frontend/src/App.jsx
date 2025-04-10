@@ -79,6 +79,13 @@ function App() {
   // We need useEffect here because otherwise the cards/emojis would only render at initial app rendering:
   useEffect(() => {
     setCards(shuffleCards())
+    setMove(1)
+    setTurns(0)
+    setMatches(0)
+    setSelections({
+      first: { id: null, emoji: null },
+      second: { id: null, emoji: null }
+    })
   }, [isMatchaMatcha])
 
 
