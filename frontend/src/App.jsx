@@ -94,6 +94,8 @@ function App() {
   const leaves = confetti.shapeFromText({ text: '🍃', scalar })
 
   const handleCelebrate = () => {
+    triggerModal(`Woohoo! 🥳 \n Turns: ${turns} \n Matches: ${matches}`);
+
     isMatchaMatcha ?
       confetti({
         shapes: [leaves],
@@ -106,17 +108,12 @@ function App() {
         particleCount: 125,
         spread: 160
       })
-
-    // For now: reset game after confetti
-    // TODO: reset game after button click
-    setTimeout(resetGame, 3000)
   }
 
-  const triggerModal = () => {
+  const triggerModal = (msgText) => {
     Swal.fire({
-      title: `Turns: ${turns} \n Matches: ${matches}`,
+      title: msgText,
       text: 'Do you want to begin a new game?',
-      // icon: 'question',
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Start a new game',
@@ -256,7 +253,7 @@ function App() {
           <button id='matches'>
             {matches} matches
           </button>
-          <button id='reset-game' onClick={() => triggerModal()}>
+          <button id='reset-game' onClick={() => triggerModal(`Turns: ${turns} \n Matches: ${matches}`)}>
             Start over
           </button>
         </div>

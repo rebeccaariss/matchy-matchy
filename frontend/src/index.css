@@ -38,6 +38,7 @@ button {
   font-family: inherit;
   /* background-color: #1a1a1a; */
   background-color: rgb(45, 63, 82);
+  outline: none;
 }
 
 /* :focus and :active are two different states.
