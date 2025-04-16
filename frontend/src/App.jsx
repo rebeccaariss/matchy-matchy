@@ -112,7 +112,7 @@ function App() {
     setTimeout(resetGame, 3000)
   }
 
-  const resetGame = () => {
+  const triggerModal = () => {
     Swal.fire({
       title: `Turns: ${turns} \n Matches: ${matches}`,
       text: 'Do you want to begin a new game?',
@@ -121,7 +121,16 @@ function App() {
       showCancelButton: true,
       confirmButtonText: 'Start a new game',
       cancelButtonText: 'Take me back',
-    })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        resetGame()
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        return;
+      }
+    });
+  }
+
+  const resetGame = () => {
     setMove(1)
     setTurns(0)
     setMatches(0)
@@ -247,7 +256,7 @@ function App() {
           <button id='matches'>
             {matches} matches
           </button>
-          <button id='reset-game' onClick={() => resetGame()}>
+          <button id='reset-game' onClick={() => triggerModal()}>
             Start over
           </button>
         </div>
