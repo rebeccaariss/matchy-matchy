@@ -7,6 +7,11 @@
   padding: 2rem;
   text-align: center;
 
+  /* Toggle: */
+  --toggle-matcha: #9fd196;
+  --toggle-neutral: rgb(113, 113, 113);
+  --toggle-slider: #fbfbfb;
+
   /* Matcha mode theme */
   --matcha-bg: #d0f0c0;
   --matcha-text: #4c854f;
@@ -44,7 +49,7 @@ label {
 	text-indent: -9999px;
 	width: 100px;
 	height: 50px;
-	background: rgb(113, 113, 113);
+	background: var(--toggle-neutral);
 	display: block;
 	border-radius: 50px;
 	position: relative;
@@ -57,13 +62,13 @@ label:after {
 	left: 2.5px;
 	width: 45px;
 	height: 45px;
-	background: #fbfbfb;
+	background: var(--toggle-slider);
 	border-radius: 90px;
 	transition: 0.35s;
 }
 
 input:checked + label {
-	background: #9fd196;
+	background: var(--toggle-matcha);
 }
 
 input:checked + label:after {
@@ -75,7 +80,6 @@ label:active:after {
 	width: 65px;
 }
 
-// centering
 body {
 	display: flex;
 	justify-content: center;
@@ -191,7 +195,6 @@ div.counters {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(89, 137, 159);
   padding: 1rem;
   margin: 1rem;
   height: 7rem;
@@ -208,9 +211,6 @@ div.counters {
 }
 
 /* TODO: add media queries for resizing AND resizing for number of cards on screen */
-
-/* Also light and dark mode? */
-
 
 
 // From https://www.youtube.com/watch?v=OV8MVmtgmoY&ab_channel=ArjunKhara:
@@ -275,9 +275,6 @@ div.counters {
   border-radius: 10px;
   backface-visibility: hidden;
   overflow: hidden;
-  // background-color: ghostwhite;
-  background-color: #e1f2e3;
-  color: #333;
   text-align: center;
   transform: rotateY(180deg);
   user-select: none;
@@ -288,18 +285,6 @@ div.counters {
   transform: rotateY(180deg);
 }
 
-
-/*This block (starts here) is merely styling for the flip card, and is NOT an essential part of the flip code */
 .cardface h1 {
   font-size: 5rem;
 }
-
-// TODO: ❗️ Turn off text highlighting for the emojis! As in: when you click and drag across the character to copy and paste.
-
-// .cardback p, .cardface p {
-//   padding: 30px;
-//   font-weight: normal;
-//   font-size: 12px;
-//   text-align: center;
-// }
-/*This block (ends here) is merely styling for the flip card, and is NOT an essential part of the flip code */
