@@ -153,11 +153,11 @@ div.counters {
 }
 
 .matchy-mode {
-  background: #a3c9e2;
-  color: #1d2a45;
+  background: var(--matchy-bg);
+  color: var(--matchy-text);
 
   .cardface {
-    background: #ceedfe;
+    background: var(--matchy-cardface);
   }
 
   .cardback {
@@ -169,12 +169,12 @@ div.counters {
     // potential block pattern: ---
     background-color: #c3dae8;
     background-image: 
-      linear-gradient(30deg, #77a9ca 12%, transparent 12.5%, transparent 87%, #77a9ca 87.5%, #77a9ca),
-      linear-gradient(150deg, #77a9ca 12%, transparent 12.5%, transparent 87%, #77a9ca 87.5%, #77a9ca),
-      linear-gradient(30deg, #77a9ca 12%, transparent 12.5%, transparent 87%, #77a9ca 87.5%, #77a9ca),
-      linear-gradient(150deg, #77a9ca 12%, transparent 12.5%, transparent 87%, #77a9ca 87.5%, #77a9ca),
-      linear-gradient(60deg, #9ec2d7 25%, transparent 25.5%, transparent 75%, #9ec2d7 75%, #9ec2d7),
-      linear-gradient(60deg, #9ec2d7 25%, transparent 25.5%, transparent 75%, #9ec2d7 75%, #9ec2d7);
+      linear-gradient(30deg, var(--matchy-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matchy-pattern-color) 87.5%, var(--matchy-pattern-color)),
+      linear-gradient(150deg, var(--matchy-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matchy-pattern-color) 87.5%, var(--matchy-pattern-color)),
+      linear-gradient(30deg, var(--matchy-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matchy-pattern-color) 87.5%, var(--matchy-pattern-color)),
+      linear-gradient(150deg, var(--matchy-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matchy-pattern-color) 87.5%, var(--matchy-pattern-color)),
+      linear-gradient(60deg, var(--matchy-pattern-overlay) 25%, transparent 25.5%, transparent 75%, var(--matchy-pattern-overlay) 75%, var(--matchy-pattern-overlay)),
+      linear-gradient(60deg, var(--matchy-pattern-overlay) 25%, transparent 25.5%, transparent 75%, var(--matchy-pattern-overlay) 75%, var(--matchy-pattern-overlay));
     background-size: 22px 37px;
     background-position: 0 0, 0 0, 11px 19px, 11px 19px, 0 0, 11px 19px;
   }
