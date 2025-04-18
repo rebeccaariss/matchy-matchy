@@ -4,6 +4,10 @@ import confetti from 'canvas-confetti'
 
 // TODO: clicking the edge of a card results in a number of undesirable behaviours (card doesn't flip completely, sometimes one will stay flipped)
 
+// TODO: Track accuracy. Accuracy = (matches / turns) * 100
+// TODO: High score across sessions with localStorage
+// TODO: Total time to finish (use a timer with useEffect)
+
 const shuffle = (array) => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -149,12 +153,11 @@ function App() {
     if (selections.first.emoji && selections.second.emoji) {
       checkMatch(selections.first, selections.second)
     }
-    console.log(selections)
   }, [selections])
 
   const checkMatch = (firstSelection, secondSelection) => {
     if (firstSelection.id === secondSelection.id) {
-      console.log('Oops, you clicked the same card twice!')
+      console.log('Oops, you clicked the same card twice!') // TODO: work with this
       setSelections({
         first: { id: null, emoji: null },
         second: { id: null, emoji: null }
@@ -162,7 +165,6 @@ function App() {
       return
     }
     if (firstSelection.emoji === secondSelection.emoji) {
-      console.log('It\'s a match! 🥳')
       setMatches(matches + 1)
       setCards((prevCards) =>
         prevCards.map((card) =>
@@ -174,7 +176,6 @@ function App() {
         )
       )
     } else {
-      console.log('Sorry, no match. 😢')
       setTimeout(() => {
         setCards((prevCards) =>
           prevCards.map((card) =>
@@ -219,12 +220,12 @@ function App() {
           <h1>{isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}</h1>
           <input 
             type="checkbox"
-            id="switch"
+            id="toggle"
             checked={isMatchaMatcha}
             onChange={() => setIsMatchaMatcha(!isMatchaMatcha)}
             title={isMatchaMatcha ? 'Play matchy matchy 👯‍♀️' : 'Play matcha matcha 🍵'}
           />
-          <label htmlFor="switch">
+          <label htmlFor="toggle">
             {isMatchaMatcha ? 'matcha matcha 🍵' : 'matchy matchy 👯‍♀️'}
           </label>
           {/* TODO: confirm correct logic for label here. */}

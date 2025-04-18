@@ -6,6 +6,22 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+
+  /* Matcha mode theme */
+  --matcha-bg: #d0f0c0;
+  --matcha-text: #4c854f;
+  --matcha-cardface: #e0ffe0;
+  --matcha-cardback-base: #f0f9f0;
+  --matcha-pattern-color: #a8d5a0;
+  --matcha-pattern-overlay: #c5e5c577;
+
+  /* Matchy mode theme */
+  --matchy-bg: #a3c9e2;
+  --matchy-text: #1d2a45;
+  --matchy-cardface: #ceedfe;
+  --matchy-cardback-base: #c3dae8;
+  --matchy-pattern-color: #77a9ca;
+  --matchy-pattern-overlay: #9ec2d7;
 }
 
 nav {
@@ -109,11 +125,11 @@ div.counters {
 // THEME SPECIFIC STYLES:
 // cardback pattern from https://www.magicpattern.design/tools/css-backgrounds
 .matcha-mode {
-  background: #d0f0c0;
-  color: #4c854f;
+  background: var(--matcha-bg);
+  color: var(--matcha-text);
 
   .cardface {
-    background: #e0ffe0;
+    background: var(--matcha-cardface);
   }
 
   .cardback {
@@ -123,14 +139,14 @@ div.counters {
     // background-size: 45px 45px, 45px 45px, 22.5px 22.5px, 22.5px 22.5px;
 
     // potential block pattern: ---
-    background-color: #f0f9f0;
+    background-color: var(--matcha-cardback-base);
     background-image: 
-      linear-gradient(30deg, #a8d5a0 12%, transparent 12.5%, transparent 87%, #a8d5a0 87.5%, #a8d5a0),
-      linear-gradient(150deg, #a8d5a0 12%, transparent 12.5%, transparent 87%, #a8d5a0 87.5%, #a8d5a0),
-      linear-gradient(30deg, #a8d5a0 12%, transparent 12.5%, transparent 87%, #a8d5a0 87.5%, #a8d5a0),
-      linear-gradient(150deg, #a8d5a0 12%, transparent 12.5%, transparent 87%, #a8d5a0 87.5%, #a8d5a0),
-      linear-gradient(60deg, #c5e5c577 25%, transparent 25.5%, transparent 75%, #c5e5c577 75%, #c5e5c577),
-      linear-gradient(60deg, #c5e5c577 25%, transparent 25.5%, transparent 75%, #c5e5c577 75%, #c5e5c577);
+      linear-gradient(30deg, var(--matcha-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matcha-pattern-color) 87.5%, var(--matcha-pattern-color)),
+      linear-gradient(150deg, var(--matcha-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matcha-pattern-color) 87.5%, var(--matcha-pattern-color)),
+      linear-gradient(30deg, var(--matcha-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matcha-pattern-color) 87.5%, var(--matcha-pattern-color)),
+      linear-gradient(150deg, var(--matcha-pattern-color) 12%, transparent 12.5%, transparent 87%, var(--matcha-pattern-color) 87.5%, var(--matcha-pattern-color)),
+      linear-gradient(60deg, var(--matcha-pattern-overlay) 25%, transparent 25.5%, transparent 75%, var(--matcha-pattern-overlay) 75%, var(--matcha-pattern-overlay)),
+      linear-gradient(60deg, var(--matcha-pattern-overlay) 25%, transparent 25.5%, transparent 75%, var(--matcha-pattern-overlay) 75%, var(--matcha-pattern-overlay));
     background-size: 22px 37px;
     background-position: 0 0, 0 0, 11px 19px, 11px 19px, 0 0, 11px 19px;
   }
